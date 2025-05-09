@@ -19,8 +19,8 @@ export class LoginComponent {
   ApiError:string='';
 
   loginForm:FormGroup = new FormGroup({
-    Email:new FormControl (null,[Validators.required,Validators.email]),
-    Password:new FormControl (null,[Validators.required,Validators.pattern(/^[A-Z][a-z0-9@]{5,10}$/)]),
+    Email:new FormControl (null,[Validators.required]),
+    Password:new FormControl (null,[Validators.required]),
     })
     
     

@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IClient } from '../Models/iclient'; 
+import { environment } from '../../environments/environmnet';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  //private apiUrl = 'https://localhost:7200/api/client'; 
-  private apiUrl = 'https://localhost:44301/api/client'; 
+  private apiUrl = `${environment.apiUrl}/client`; 
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('usertoken');

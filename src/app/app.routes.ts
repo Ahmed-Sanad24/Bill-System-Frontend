@@ -31,6 +31,7 @@ import { ClientFormComponent } from './components/clients/client-form/client-for
 import { InvoiceDetailsComponent } from './components/Invoice/invoice-details/invoice-details.component';
 import { EditInvoiceComponent } from './components/Invoice/edit-invoice/edit-invoice.component';
 import { authGuard } from './auth.guard';
+import { MainComponent } from './components/main/main.component';
 
 
 

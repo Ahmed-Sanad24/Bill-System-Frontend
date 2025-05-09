@@ -1,7 +1,16 @@
-<app-navbare></app-navbare>
-<div class="d-flex  ">
-    <app-side-navbare ></app-side-navbare>
-    <app-main class="  container p-5 pt-0" ></app-main>
-</div>
+<!-- Conditional display based on authentication status -->
+<ng-container *ngIf="isLoggedIn; else loginTemplate">
+  <!-- Authenticated layout with navbar and sidebar -->
+  <app-navbare></app-navbare>
+  <div class="d-flex">
+    <app-side-navbare></app-side-navbare>
+    <div class="container p-5 pt-0">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-container>
 
-
+<!-- Login layout -->
+<ng-template #loginTemplate>
+  <router-outlet></router-outlet>
+</ng-template>

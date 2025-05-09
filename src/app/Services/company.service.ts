@@ -1,14 +1,14 @@
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICompany } from '../Models/icompany';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from '../../environments/environmnet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
-    //baseUrl:string="https://localhost:7200/api/company"
-    baseUrl:string="https://localhost:44301/api/Company"
+    private apiUrl = `${environment.apiUrl}/Company`;
 
     private getHeaders(): HttpHeaders {
       const token = localStorage.getItem('usertoken');
@@ -20,18 +20,18 @@ export class CompanyService {
   {}
 
   GetAllCompanies():Observable<ICompany[]>{
-    return this.http.get<ICompany[]>(this.baseUrl);
+    return this.http.get<ICompany[]>(this.apiUrl);
   }
   GetCompanyById(companyId:any):Observable<ICompany>{
-    return this.http.get<ICompany>(`${this.baseUrl}/${companyId}`,{headers:this.getHeaders()});
+    return this.http.get<ICompany>(`${this.apiUrl}/${companyId}`,{headers:this.getHeaders()});
   }
   AddCompany(company:ICompany){
-    return this.http.post(this.baseUrl,company,{headers:this.getHeaders()});
+    return this.http.post(this.apiUrl,company,{headers:this.getHeaders()});
   }
   EditCompany(company: ICompany , companyId:any){
-    return this.http.put(`${this.baseUrl}/${companyId}`,company,{headers:this.getHeaders()})
+    return this.http.put(`${this.apiUrl}/${companyId}`,company,{headers:this.getHeaders()})
   }
   DeleteCompany(companyId:any){
-    return this.http.delete(`${this.baseUrl}/${companyId}`,{headers:this.getHeaders()});
+    return this.http.delete(`${this.apiUrl}/${companyId}`,{headers:this.getHeaders()});
   }
 }

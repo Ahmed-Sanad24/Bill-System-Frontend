@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUnit } from '../Models/iunit'; 
+import { environment } from '../../environments/environmnet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UnitService {
 
-  //private apiUrl = 'https://localhost:7200/api/unit';
-  private apiUrl = 'https://localhost:44301/api/unit';
+  private apiUrl = `${environment.apiUrl}/unit`;
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('usertoken');
     return new HttpHeaders({
